@@ -45,23 +45,28 @@ const app = express();
 
 // app.use(cors());
 
-const allowedOrigins = [
-  "https://blaadmin.vercel.app",
-  // optionally add more origins here
-];
+const allowedOrigins = ["https://blaadmin.vercel.app"];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // if you're sending cookies or auth headers
-  })
-);
+// Setup CORS middleware
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow no origin (like mobile apps or curl) or listed origins
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Allow credentials like cookies or Authorization header
+};
+
+// Use CORS for all routes
+app.use(cors(corsOptions));
+
+// Enable pre-flight across-the-board (for all routes and methods)
+app.options("*", cors(corsOptions));
+
+// Parse JSON bodies
 app.use(express.json());
 app.use(admin.options.rootPath, adminJsRouter);
 
