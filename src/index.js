@@ -45,7 +45,7 @@ const app = express();
 
 // app.use(cors());
 
-const allowedOrigins = ["https://blaadmin.vercel.app"];
+const allowedOrigins = ["https://blaadmin.vercel.app/"];
 
 // Setup CORS middleware
 const corsOptions = {
@@ -76,10 +76,6 @@ useTreblle(app, {
 })
 
 const httpServer = createServer(app);
-app.use((req, res, next) => {
-  console.log(`[${req.method}] ${req.url} - Origin: ${req.headers.origin}`);
-  next();
-});
 
 
 app.use('/api/auth', router);
