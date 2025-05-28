@@ -43,7 +43,25 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+const allowedOrigins = [
+  "https://blaadmin.vercel.app",
+  // optionally add more origins here
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // if you're sending cookies or auth headers
+  })
+);
 app.use(express.json());
 app.use(admin.options.rootPath, adminJsRouter);
 
