@@ -45,7 +45,7 @@ const app = express();
 
 // app.use(cors());
 
-const allowedOrigins = ["https://blaadmin.vercel.app/"];
+const allowedOrigins = ["https://blaadmin.vercel.app"];
 
 // Setup CORS middleware
 const corsOptions = {

@@ -87,18 +87,39 @@ const registerHandler = async (req, res) => {
       { expiresIn: '24h' }
     );
 
-    const response = {
+    // const response = {
+    //   id: user.id,
+    //   email: user.email,
+    //   isVerified: user.isVerified,
+    //   type: user.type,
+    //   status: user.status,
+    //   roles: [defaultRoleName],
+    //   code,
+    //   token,
+    //   referralCode: user.referralCode,
+    //   hasFreeShipping: user.hasFreeShipping
+    // };
+
+    // authController.js - loginHandler
+const response = {
+  success: true,
+  message: 'Login successful',
+  data: {
+    token,
+    user: {
       id: user.id,
       email: user.email,
-      isVerified: user.isVerified,
+      name: user.profile?.fullName || user.businessProfile?.businessName,
       type: user.type,
-      status: user.status,
-      roles: [defaultRoleName],
-      code,
-      token,
-      referralCode: user.referralCode,
-      hasFreeShipping: user.hasFreeShipping
-    };
+      isVerified: user.isVerified,
+      profile: user.profile || user.businessProfile,
+      roles: user.roles.map(r => r.role.name), // Fix role format
+      addresses: user.address
+    }
+  }
+};
+
+res.status(200).json(response);
 
     return res.status(201).json({ 
       message: 'User registered successfully', 
