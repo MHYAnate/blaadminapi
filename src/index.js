@@ -45,26 +45,30 @@ const app = express();
 
 // app.use(cors());
 
-const allowedOrigins = ["https://blaadmin.vercel.app"];
+const allowedOrigins = [
+  "https://blaadmin.vercel.app",
+  "http://localhost:3000" // Add local for testing
+];
 
-// Setup CORS middleware
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow no origin (like mobile apps or curl) or listed origins
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true, // Allow credentials like cookies or Authorization header
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 // Use CORS for all routes
 app.use(cors(corsOptions));
 
 // Enable pre-flight across-the-board (for all routes and methods)
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigins.join(','));
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.status(200).end();
+});
 
 // Parse JSON bodies
 app.use(express.json());
