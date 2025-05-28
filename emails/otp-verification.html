@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email - BuyLocal</title>
+  <style type="text/css">
+    /* Client-specific resets */
+    body, p, h1, h2, h3, ul, li { margin: 0; padding: 0; }
+    img { border: 0; -ms-interpolation-mode: bicubic; }
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      color: #333333;
+      background-color: #f4f4f4;
+    }
+    
+    /* Email container */
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+    
+    /* Header */
+    .header {
+      padding: 20px;
+    }
+    
+    /* Banner */
+    .banner {
+      background: #0F3D30;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .banner-text {
+      color: #ffffff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    /* Content */
+    .content {
+      padding: 30px 20px;
+    }
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    /* OTP Box */
+    .otp-box {
+      border: 1px dashed #FFBF3B;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      background-color: #FFF9ED;
+    }
+    
+    /* Buttons */
+    .button {
+      display: inline-block;
+      width: 100%;
+      max-width: 200px;
+      background: #0F3D30;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      padding: 12px 0;
+      border-radius: 10px;
+      margin: 10px 5px;
+    }
+    .button img {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #C9FCE9;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .footer h3 {
+      font-size: 20px;
+      color: #0B0B0B;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .footer p {
+      color: #0B0B0B;
+      margin-bottom: 15px;
+    }
+    .social-links {
+      margin: 15px 0;
+    }
+    .social-links td {
+      padding: 0 10px;
+    }
+    
+    /* Mobile styles */
+    @media screen and (max-width: 480px) {
+      .email-container {
+        width: 100% !important;
+      }
+      .banner-text {
+        font-size: 20px !important;
+      }
+      .content, .footer {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+      .button {
+        display: block;
+        max-width: 100%;
+        margin: 10px 0 !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+  <!-- Email container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td align="center" bgcolor="#f4f4f4">
+        <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+          <!-- Header -->
+          <tr>
+            <td class="header">
+              <a href="https://buylocal.com">
+                <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/email/logo" alt="BuyLocal" width="150" style="display: block;">
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Banner -->
+          <tr>
+            <td class="banner">
+              <p class="banner-text">Verify Your Email – Secure Your BuyLocal Account</p>
+              <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741048246/email/verify.png" alt="" width="100%" style="display: block;">
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td class="content">
+              <p>Hi {{name}},</p>
+              <p>
+                Thank you for signing up with BuyLocal! Before we get started, please verify your email to secure your account.
+              </p>
+              <p>
+                Your one-time verification code is:
+              </p>
+              
+              <!-- OTP Box -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <div class="otp-box">
+                      {{otp}}
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              
+              <p>
+                Please enter this code in the app or website to complete your email verification. This code will expire in 10 minutes.
+              </p>
+              <p>
+                If you didn't sign up for a BuyLocal account, please ignore this email.
+              </p>
+              <p>
+                Best regards,<br>The BuyLocal Team
+              </p>
+              
+              <!-- App buttons -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td>
+                          <a href="https://play.google.com/store" class="button">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/andriod.png" alt="" width="24"> 
+                            Google Play
+                          </a>
+                        </td>
+                        <td>
+                          <a href="https://www.apple.com/app-store/" class="button">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/apple.png" alt="" width="24"> 
+                            App Store
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td class="footer">
+              <h3>BuyLocal</h3>
+              <p>connect@buylocalafrica.com<br>www.buylocal.com</p>
+              
+              <!-- Social links -->
+              <table class="social-links" role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tr>
+                  <td>
+                    <a href="https://facebook.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/facebook-icon.png" alt="Facebook" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://twitter.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/twitter-icon.png" alt="Twitter" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://instagram.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/instagram-icon.png" alt="Instagram" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://youtube.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/youtube-icon.png" alt="YouTube" width="30">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

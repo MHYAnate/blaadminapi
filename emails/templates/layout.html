@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+  <style type="text/css">
+    /* Base styles that some email clients will respect */
+    body, p, h1, h2, h3, ul, li { 
+      margin: 0 !important; 
+      padding: 0 !important; 
+    }
+    img { 
+      border: 0 !important; 
+      -ms-interpolation-mode: bicubic !important; 
+    }
+    table { 
+      border-collapse: collapse !important; 
+      mso-table-lspace: 0pt !important; 
+      mso-table-rspace: 0pt !important; 
+    }
+  </style>
+</head>
+<body style="margin: 0 !important; padding: 0 !important; font-family: Arial, sans-serif !important; line-height: 1.4 !important; color: #333333 !important; background-color: #f4f4f4 !important;">
+  <!-- Main Email Container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100% !important;">
+    <tr>
+      <td align="center" bgcolor="#f4f4f4" style="background-color: #f4f4f4 !important;">
+        <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="width: 600px !important; max-width: 600px !important; margin: 0 auto !important; background: #ffffff !important;">
+          
+          <!-- Header with Logo -->
+          <tr>
+            <td class="header" style="padding: 20px !important; text-align: center !important;">
+              <a href="https://buylocal.com" style="text-decoration: none !important;">
+                <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/email/logo" alt="BuyLocal" width="100" style="display: block !important; width: 100px !important;">
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Banner Section -->
+          <tr>
+            <td class="banner" style="background: #0F3D30 !important; padding: 30px 20px !important; text-align: center !important;">
+              <p class="banner-text" style="color: #ffffff !important; font-size: 24px !important; margin-bottom: 20px !important; font-weight: bold !important;">{{bannerText}}</p>
+              {{#if bannerImage}}
+              <img src="{{bannerImage}}" alt="" width="100%" style="display: block !important; width: 100% !important;">
+              {{/if}}
+            </td>
+          </tr>
+          
+          <!-- Dynamic Content Section -->
+          <tr>
+            <td class="content" style="padding: 34px 20px !important;">
+              {{{body}}}
+              
+              <!-- App Download Buttons -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100% !important; margin: 25px 0 !important;">
+                <tr>
+                  <td align="center" style="text-align: center !important;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 0 10px !important;">
+                          <a href="https://play.google.com/store" style="display: block !important; width: 100% !important; max-width: 200px !important; background: #0F3D30 !important; color: #ffffff !important; text-decoration: none !important; text-align: center !important; font-weight: bold !important; padding: 15px 0 !important; border-radius: 10px !important; margin: 20px 0 !important;">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/andriod.png" alt="" width="20" style="vertical-align: middle !important; margin-right: 8px !important; width: 20px !important;"> 
+                            Google Play
+                          </a>
+                        </td>
+                        <td style="padding: 0 10px !important;">
+                          <a href="https://www.apple.com/app-store/" style="display: block !important; width: 100% !important; max-width: 200px !important; background: #0F3D30 !important; color: #ffffff !important; text-decoration: none !important; text-align: center !important; font-weight: bold !important; padding: 15px 0 !important; border-radius: 10px !important; margin: 20px 0 !important;">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/apple.png" alt="" width="20" style="vertical-align: middle !important; margin-right: 8px !important; width: 20px !important;"> 
+                            App Store
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer Section -->
+          <tr>
+            <td class="footer" style="background: #C9FCE9 !important; text-align: center !important; padding: 30px 20px !important;">
+              <h3 style="margin: 0 0 10px 0 !important;">BuyLocal</h3>
+              <p style="margin: 0 0 15px 0 !important;">connect@buylocalafrica.com<br>www.buylocal.com</p>
+              
+              <!-- Social Links -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: 0 auto !important;">
+                <tr>
+                  <td style="padding: 0 10px !important;">
+                    <a href="https://facebook.com/buylocal" style="text-decoration: none !important;">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/facebook-icon.png" alt="Facebook" width="30" style="width: 30px !important;">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px !important;">
+                    <a href="https://twitter.com/buylocal" style="text-decoration: none !important;">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/twitter-icon.png" alt="Twitter" width="30" style="width: 30px !important;">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px !important;">
+                    <a href="https://instagram.com/buylocal" style="text-decoration: none !important;">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/instagram-icon.png" alt="Instagram" width="30" style="width: 30px !important;">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px !important;">
+                    <a href="https://youtube.com/buylocal" style="text-decoration: none !important;">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/youtube-icon.png" alt="YouTube" width="30" style="width: 30px !important;">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

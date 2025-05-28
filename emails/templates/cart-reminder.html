@@ -1,0 +1,38 @@
+{{setVar "subject" "Your Cart Is Waiting!"}}
+{{setVar "bannerText" "Complete Your Purchase"}}
+{{setVar "bannerImage" "https://res.cloudinary.com/dsj9phqyk/image/upload/email/cart-banner"}}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, sans-serif;">
+  <tr>
+    <td style="padding-bottom: 15px;">
+      <p style="margin: 0 0 15px 0; font-size: 16px;">Hi {{name}},</p>
+      <p style="margin: 0 0 15px 0; font-size: 16px;">You left some great items in your cart!</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-bottom: 15px;">
+      {{#each items}}
+      <div style="border-bottom: 1px solid #eee; padding: 10px 0;">
+        <img alt="product image" src="{{image}}" width="60" style="vertical-align: middle; margin-right: 15px;">
+        <span style="vertical-align: middle;">{{name}} - {{price}}</span>
+      </div>
+      {{/each}}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-bottom: 25px;">
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center" bgcolor="#0F3D30" style="border-radius: 8px;">
+            <a href="{{cartLink}}" target="_blank" style="display: inline-block; padding: 12px 24px; color: #ffffff; text-decoration: none; font-weight: bold;">Complete Purchase</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p style="margin: 0 0 15px 0; font-size: 14px; color: #666666;">Your cart will expire in 24 hours.</p>
+    </td>
+  </tr>
+</table>

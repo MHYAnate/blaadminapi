@@ -1,0 +1,6 @@
+product_id,value,price,weight,stock_price,selling_price,markup_type,markup_value,moq,unit,inventory,low_stock_threshold,images
+1,Small,19.99,0.3,8.5,15,PERCENTAGE,30,1,pcs,100,10,small-red.jpg|small-blue.jpg
+1,Medium,19.99,0.3,8.5,15,PERCENTAGE,30,1,pcs,150,10,medium.jpg
+1,Large,21.99,0.35,9,16,PERCENTAGE,30,1,pcs,80,5,large.jpg
+2,Black,129.99,0.5,45,100,FIXED,29.99,1,pcs,75,5,black1.jpg|black2.jpg
+2,White,129.99,0.5,45,100,FIXED,29.99,1,pcs,60,5,white.jpg

@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+  <style type="text/css">
+    /* Base styles */
+    body, p, h1, h2, h3, ul, li { margin: 0; padding: 0; }
+    img { border: 0; -ms-interpolation-mode: bicubic; }
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      color: #333333;
+      background-color: #f4f4f4;
+    }
+    
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+    
+    .header {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .banner {
+      background: #0F3D30;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    
+    .banner-text {
+      color: #ffffff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .content {
+      padding: 30px 20px;
+    }
+    
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    .button {
+      display: inline-block;
+      background: #0F3D30;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    
+    .footer {
+      background: #C9FCE9;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    
+    /* Template-specific styles */
+    .otp-box {
+      border: 1px dashed #FFBF3B;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      background-color: #FFF9ED;
+    }
+    
+    .order-table {
+      width: 100%;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+    }
+    
+    .order-table th {
+      background: #f5f5f5;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    .order-table td {
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+    
+    /* Mobile styles */
+    @media screen and (max-width: 480px) {
+      .email-container {
+        width: 100% !important;
+      }
+      .banner-text {
+        font-size: 20px !important;
+      }
+      .content, .footer {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+  <!-- Main Email Container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td align="center" bgcolor="#f4f4f4">
+        <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+          
+          <!-- Header with Logo -->
+          <tr>
+            <td class="header">
+              <a href="https://buylocal.com">
+                <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/email/logo" alt="BuyLocal" width="150" style="display: block;">
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Banner Section -->
+          <tr>
+            <td class="banner">
+              <p class="banner-text">{{bannerText}}</p>
+              {{#if bannerImage}}
+              <img src="{{bannerImage}}" alt="" width="100%" style="display: block;">
+              {{/if}}
+            </td>
+          </tr>
+          
+          <!-- Dynamic Content Section -->
+          <tr>
+            <td class="content">
+              {{{body}}}
+              
+              <!-- App Download Buttons -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 25px 0;">
+                <tr>
+                  <td align="center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 0 10px;">
+                          <a href="https://play.google.com/store" class="button">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/andriod.png" alt="" width="20" style="vertical-align: middle; margin-right: 8px;"> 
+                            Google Play
+                          </a>
+                        </td>
+                        <td style="padding: 0 10px;">
+                          <a href="https://www.apple.com/app-store/" class="button">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/apple.png" alt="" width="20" style="vertical-align: middle; margin-right: 8px;"> 
+                            App Store
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer Section -->
+          <tr>
+            <td class="footer">
+              <h3 style="margin: 0 0 10px 0;">BuyLocal</h3>
+              <p style="margin: 0 0 15px 0;">connect@buylocalafrica.com<br>www.buylocal.com</p>
+              
+              <!-- Social Links -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tr>
+                  <td style="padding: 0 10px;">
+                    <a href="https://facebook.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/facebook-icon.png" alt="Facebook" width="30">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px;">
+                    <a href="https://twitter.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/twitter-icon.png" alt="Twitter" width="30">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px;">
+                    <a href="https://instagram.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/instagram-icon.png" alt="Instagram" width="30">
+                    </a>
+                  </td>
+                  <td style="padding: 0 10px;">
+                    <a href="https://youtube.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/youtube-icon.png" alt="YouTube" width="30">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

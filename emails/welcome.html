@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to BuyLocal</title>
+  <style type="text/css">
+    /* Client-specific resets */
+    body, p, h1, h2, h3, ul, li { margin: 0; padding: 0; }
+    img { border: 0; -ms-interpolation-mode: bicubic; }
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+      color: #333333;
+      background-color: #f4f4f4;
+    }
+    
+    /* Email container */
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+    
+    /* Header */
+    .header {
+      padding: 20px;
+    }
+    
+    /* Banner */
+    .banner {
+      background: #0F3D30;
+      padding: 38px 20px;
+      text-align: center;
+    }
+    .banner-text {
+      color: #ffffff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    /* Content */
+    .content {
+      padding: 34px 20px;
+    }
+    .content p {
+      margin-bottom: 15px;
+    }
+    .content ul {
+      margin: 15px 0 15px 20px;
+    }
+    .content li {
+      margin-bottom: 8px;
+    }
+    
+    /* Buttons */
+    .button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      background: #FFBF3B;
+      color: #000000;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      padding: 15px 0;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    .button-primary {
+      background: #0F3D30;
+      color: #ffffff;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #C9FCE9;
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .footer h3 {
+      font-size: 20px;
+      color: #0B0B0B;
+      margin-bottom: 10px;
+    }
+    .footer p {
+      color: #0B0B0B;
+      margin-bottom: 15px;
+    }
+    .social-links {
+      margin: 15px 0;
+    }
+    .social-links td {
+      padding: 0 10px;
+    }
+    
+    /* Mobile styles */
+    @media screen and (max-width: 480px) {
+      .email-container {
+        width: 100% !important;
+      }
+      .banner-text {
+        font-size: 20px !important;
+      }
+      .content, .footer {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+  <!-- Email container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td align="center" bgcolor="#f4f4f4">
+        <table class="email-container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+          <!-- Header -->
+          <tr>
+            <td class="header">
+              <a href="https://buylocal.com">
+                <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/email/logo" alt="BuyLocal" width="150" style="display: block;">
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Banner -->
+          <tr>
+            <td class="banner">
+              <p class="banner-text">Welcome to BuyLocal – Your Shopping Journey Starts Here!</p>
+              <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/email/welcome-banner" alt="" width="100%" style="display: block;">
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td class="content">
+              <p>Hi {{name}},</p>
+              <p>
+                Welcome to BuyLocal! 🎉 We're excited to have you on board.
+                Explore a world of amazing products, unbeatable deals, and a seamless shopping experience. Here's what you can do next:
+              </p>
+              
+              <ul>
+                <li>✅ Browse our latest collections</li>
+                <li>✅ Save your favorite items for later</li>
+                <li>✅ Get exclusive discounts as a valued member</li>
+              </ul>
+              
+              <a href="https://buylocal.com/shop" class="button">Shop Now</a>
+              
+              <p>Need help? Our support team is here for you!</p>
+              <p>
+                Happy Shopping,<br>
+                The BuyLocal Team
+              </p>
+              
+              <!-- App buttons -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 0 10px;">
+                          <a href="https://play.google.com/store" class="button button-primary" style="width: 180px;">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/andriod.png" alt="" width="24" style="vertical-align: middle; margin-right: 10px;"> 
+                            Google Play
+                          </a>
+                        </td>
+                        <td style="padding: 0 10px;">
+                          <a href="https://www.apple.com/app-store/" class="button button-primary" style="width: 180px;">
+                            <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1741195374/email/apple.png" alt="" width="24" style="vertical-align: middle; margin-right: 10px;"> 
+                            App Store
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td class="footer">
+              <h3>BuyLocal</h3>
+              <p>connect@buylocalafrica.com<br>www.buylocal.com</p>
+              
+              <!-- Social links -->
+              <table class="social-links" role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tr>
+                  <td>
+                    <a href="https://facebook.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/facebook-icon.png" alt="Facebook" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://twitter.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/twitter-icon.png" alt="Twitter" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://instagram.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/instagram-icon.png" alt="Instagram" width="30">
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://youtube.com/buylocal">
+                      <img src="https://res.cloudinary.com/dsj9phqyk/image/upload/v1712345678/youtube-icon.png" alt="YouTube" width="30">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

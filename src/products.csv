@@ -1,0 +1,4 @@
+id,name,description,category_id,manufacturer_id,is_active,type
+1,Premium T-Shirt,100% cotton,1,1,true,platform
+2,Wireless Headphones,Noise-cancelling,2,2,true,platform
+3,Organic Green Tea,Premium organic,3,3,true,business
