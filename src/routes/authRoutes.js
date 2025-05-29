@@ -11,6 +11,7 @@ import {
   userDetailsHandler,
   resendVerificationHandler,
   setPasswordHandler,
+  refreshTokenHandler
  } from '../controllers/authController.js';
 import { loginLimiter } from '../utils.js';
 import authenticate from '../middlewares/authMiddleware.js';
@@ -98,6 +99,8 @@ router.post('/reset-password',[
   body('code').isLength({ min: 6, max: 6 }).withMessage('Invalid verification code'),
   body('email').isEmail(),
 ], setPasswordHandler);
+
+router.post('/refresh', refreshTokenHandler);
 
 
 router.post('/logout',authenticate, logoutHandler);

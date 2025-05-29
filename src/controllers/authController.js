@@ -173,18 +173,18 @@ const loginHandler = async (req, res) => {
     }
 
     // 3. Generate JWT token
-    const token = jwt.sign(
-      { id: user.id, email: user.email, type: user.type, roles: user.roles },
-      process.env.JWT_SECRET,
-      { expiresIn: '1d' }
-    );
-
-    // 4. Format response with address
-    const response = {
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '15m' });
+    const refreshToken = jwt.sign({ id: user.id }, REFRESH_SECRET, { expiresIn: '7d' });
+    
+    res.status(200).json({
+      success: true,
+      message: 'Login successful',
+      data: {
+        token,
+        refreshToken,
+        user: {
+          id: user.id,
+          email: user.email,
         name: user.profile?.fullName || user.businessProfile?.businessName,
         type: user.type,
         isVerified: user.isVerified,
@@ -192,13 +192,14 @@ const loginHandler = async (req, res) => {
         role: user.roles,
         addresses: user.address
       }
-    };
+    }})
+    
 
-    res.status(200).json({
-      success: true,
-      message: 'Login successful',
-      data: response
-    });
+    // res.status(200).json({
+    //   success: true,
+    //   message: 'Login successful',
+    //   data: response
+    // });
 
   } catch (error) {
     console.error('Login error:', error);
@@ -206,6 +207,45 @@ const loginHandler = async (req, res) => {
       success: false,
       error: 'Server error during login' 
     });
+  }
+};
+
+export const refreshTokenHandler = async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({ error: "Refresh token required" });
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_SECRET);
+    const user = await prisma.user.findUnique({ where: { id: decoded.id } });
+    
+    if (!user) {
+      return res.status(401).json({ error: "Invalid user" });
+    }
+
+    // Generate new access token
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "15m" }
+    );
+    
+    // Optionally generate new refresh token
+    const newRefreshToken = jwt.sign(
+      { id: user.id },
+      process.env.REFRESH_SECRET,
+      { expiresIn: "7d" }
+    );
+    
+    res.json({ 
+      token,
+      refreshToken: newRefreshToken 
+    });
+  } catch (error) {
+    console.error("Token refresh error:", error);
+    res.status(401).json({ error: "Invalid refresh token" });
   }
 };
 
