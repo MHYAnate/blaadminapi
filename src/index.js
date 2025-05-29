@@ -120,7 +120,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 3130;
+const PORT = 443 || 3130;
 
 
 // Change from app.listen to httpServer.listen
