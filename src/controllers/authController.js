@@ -139,6 +139,76 @@ res.status(200).json(response);
   
 
 // auth.controller.js
+// const loginHandler = async (req, res) => {
+//   const errors = validationResult(req);
+  
+//   if (!errors.isEmpty()) {
+//     return res.status(400).json({ errors: errors.array() });
+//   }
+
+//   const { email, password } = req.body;
+
+//   try {
+//     // 1. Find user with email
+//     const user = await prisma.user.findUnique({
+//       where: { email },
+//       include: {
+//         profile: true,
+//         businessProfile: true,
+//         address: true, 
+//         roles: {
+//           include: {
+//             role: true
+//           }
+//         }
+//       }
+//     });
+
+//     // 2. Verify user exists and password matches
+//     if (!user || !(await bcrypt.compare(password, user.password))) {
+//       return res.status(401).json({ 
+//         success: false,
+//         error: 'Invalid credentials' 
+//       });
+//     }
+
+//     // 3. Generate JWT token
+//     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '15m' });
+//     const refreshToken = jwt.sign({ id: user.id }, REFRESH_SECRET, { expiresIn: '7d' });
+    
+//     res.status(200).json({
+//       success: true,
+//       message: 'Login successful',
+//       data: {
+//         token,
+//         refreshToken,
+//         user: {
+//           id: user.id,
+//           email: user.email,
+//         name: user.profile?.fullName || user.businessProfile?.businessName,
+//         type: user.type,
+//         isVerified: user.isVerified,
+//         profile: user.profile || user.businessProfile,
+//         role: user.roles,
+//         addresses: user.address
+//       }
+//     }})
+    
+
+//     // res.status(200).json({
+//     //   success: true,
+//     //   message: 'Login successful',
+//     //   data: response
+//     // });
+
+//   } catch (error) {
+//     console.error('Login error:', error);
+//     res.status(500).json({ 
+//       success: false,
+//       error: 'Server error during login' 
+//     });
+//   }
+// };
 const loginHandler = async (req, res) => {
   const errors = validationResult(req);
   
@@ -149,67 +219,105 @@ const loginHandler = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // 1. Find user with email
     const user = await prisma.user.findUnique({
       where: { email },
       include: {
         profile: true,
         businessProfile: true,
-        address: true, 
+        address: true,
         roles: {
-          include: {
-            role: true
+          select: {
+            role: {
+              select: {
+                name: true
+              }
+            }
           }
         }
       }
     });
 
-    // 2. Verify user exists and password matches
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!user) {
       return res.status(401).json({ 
         success: false,
         error: 'Invalid credentials' 
       });
     }
 
-    // 3. Generate JWT token
-    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '15m' });
-    const refreshToken = jwt.sign({ id: user.id }, REFRESH_SECRET, { expiresIn: '7d' });
-    
+    // Verify password
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ 
+        success: false,
+        error: 'Invalid credentials' 
+      });
+    }
+
+    // Extract role names
+    const roleNames = user.roles.map(ur => ur.role.name);
+
+    // Create token payload
+    const tokenPayload = {
+      id: user.id,
+      email: user.email,
+      type: user.type,
+      roles: roleNames,
+      hasFreeShipping: user.hasFreeShipping
+    };
+
+    const token = jwt.sign(
+      tokenPayload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1d' }
+    );
+
+    // Create refresh token
+    const refreshToken = jwt.sign(
+      { id: user.id },
+      process.env.REFRESH_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    // Prepare user response data
+    const userResponse = {
+      id: user.id,
+      email: user.email,
+      name: user.profile?.fullName || user.businessProfile?.businessName,
+      type: user.type,
+      isVerified: user.isVerified,
+      profile: user.type === 'individual' ? user.profile : user.businessProfile,
+      roles: roleNames,
+      addresses: user.address
+    };
+
     res.status(200).json({
       success: true,
       message: 'Login successful',
       data: {
         token,
         refreshToken,
-        user: {
-          id: user.id,
-          email: user.email,
-        name: user.profile?.fullName || user.businessProfile?.businessName,
-        type: user.type,
-        isVerified: user.isVerified,
-        profile: user.profile || user.businessProfile,
-        role: user.roles,
-        addresses: user.address
+        user: userResponse
       }
-    }})
-    
-
-    // res.status(200).json({
-    //   success: true,
-    //   message: 'Login successful',
-    //   data: response
-    // });
+    });
 
   } catch (error) {
     console.error('Login error:', error);
+    
+    // Specific error for Prisma issues
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      return res.status(500).json({
+        success: false,
+        error: 'Database error',
+        code: error.code
+      });
+    }
+
     res.status(500).json({ 
       success: false,
       error: 'Server error during login' 
     });
   }
 };
-
 export const refreshTokenHandler = async (req, res) => {
   const { refreshToken } = req.body;
 
