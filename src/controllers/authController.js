@@ -212,12 +212,38 @@ res.status(200).json(response);
 const loginHandler = async (req, res) => {
   const errors = validationResult(req);
   
+  
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
   const { email, password } = req.body;
 
+  // try {
+  //   const user = await prisma.user.findUnique({
+  //     where: { email },
+  //     include: {
+  //       profile: true,
+  //       businessProfile: true,
+  //       address: true,
+  //       roles: {
+  //         select: {
+  //           role: {
+  //             select: {
+  //               name: true
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   });
+
+  //   if (!user) {
+  //     return res.status(401).json({ 
+  //       success: false,
+  //       error: 'Invalid credentials' 
+  //     });
+  //   }
   try {
     const user = await prisma.user.findUnique({
       where: { email },
@@ -226,24 +252,20 @@ const loginHandler = async (req, res) => {
         businessProfile: true,
         address: true,
         roles: {
-          select: {
-            role: {
-              select: {
-                name: true
-              }
-            }
+          include: {
+            role: true
           }
         }
       }
     });
 
     if (!user) {
+      console.warn('User not found for email:', email);
       return res.status(401).json({ 
         success: false,
         error: 'Invalid credentials' 
       });
     }
-
     // Verify password
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
